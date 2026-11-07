@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-key="page_title">مجموعة أرباح للحلول البرمجية | ARBAH GROUP - تطبيقات حسب الطلب</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Cairo & Tajawal -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            darkBg: '#12021F',
+                            cardBg: '#1E0633',
+                            purpleDeep: '#2A0845',
+                            purpleLight: '#4C127A',
+                            gold: '#FFD700',
+                            goldMid: '#F3A812',
+                            goldDark: '#B8860B',
+                            goldLight: '#FFF2A3'
+                        }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        tajawal: ['Tajawal', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'gold-glow': '0 0 25px rgba(243, 168, 18, 0.35)',
+                        'gold-glow-lg': '0 0 45px rgba(255, 215, 0, 0.45)',
+                        'purple-glow': '0 0 35px rgba(76, 18, 122, 0.5)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #12021F;
+            color: #F3F4F6;
+            overflow-x: hidden;
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF2A3 0%, #FFD700 40%, #F3A812 70%, #B8860B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-gradient-bg {
+            background: linear-gradient(135deg, #FFD700 0%, #F3A812 50%, #B8860B 100%);
+        }
+
+        .gold-gradient-bg-hover:hover {
+            background: linear-gradient(135deg, #FFE44D 0%, #FFC107 50%, #D4AF37 100%);
+        }
+
+        .gold-border-rounded {
+            border: 1px solid transparent;
+            background: linear-gradient(#1E0633, #1E0633) padding-box,
+                        linear-gradient(135deg, rgba(255,215,0,0.6), rgba(243,168,18,0.2), rgba(184,134,11,0.5)) border-box;
+        }
+
+        .gold-border-glow:hover {
+            border-color: rgba(255, 215, 0, 0.8);
+            box-shadow: 0 0 20px rgba(243, 168, 18, 0.4);
+        }
+
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 215, 0, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 215, 0, 0.04) 1px, transparent 1px);
+        }
+
+        .bg-radial-purple {
+            background: radial-gradient(circle at 50% 20%, rgba(76, 18, 122, 0.45) 0%, rgba(18, 2, 31, 1) 70%);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-14px) rotate(1.5deg); }
+        }
+
+        .animate-float {
+            animation: float 5.5s ease-in-out infinite;
+        }
+
+        .lang-btn.active {
+            background: #FFD700;
+            color: #12021F;
+            font-weight: bold;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #12021F; }
+        ::-webkit-scrollbar-thumb { background: #3E0E63; border-radius: 5px; border: 1px solid rgba(255, 215, 0, 0.2); }
+        ::-webkit-scrollbar-thumb:hover { background: #F3A812; }
+    </style>
+</head>
+<body class="bg-brand-darkBg text-gray-100 antialiased selection:bg-brand-goldMid selection:text-black">
+
+    <!-- Ambient Background Glows -->
+    <div class="fixed top-0 right-1/4 w-96 h-96 bg-brand-purpleLight/30 rounded-full blur-3xl pointer-events-none -z-10"></div>
+    <div class="fixed bottom-1/3 left-10 w-80 h-80 bg-brand-goldMid/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
+
+    <!-- TOP LANGUAGE BAR -->
+    <div class="bg-brand-purpleDeep/90 border-b border-brand-gold/15 py-1.5 px-4 text-xs">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-2 text-gray-300">
+                <i class="fa-solid fa-globe text-brand-gold"></i>
+                <span data-key="lang_select_title" class="hidden sm:inline">اختر اللغة / Language:</span>
+            </div>
+            
+            <div class="flex items-center gap-1.5">
+                <button onclick="switchLanguage('ar')" id="lang-ar" class="lang-btn active px-3 py-1 rounded-full border border-brand-gold/30 hover:border-brand-gold text-[11px] transition">
+                    🇩🇿 العربية
+                </button>
+                <button onclick="switchLanguage('fr')" id="lang-fr" class="lang-btn px-3 py-1 rounded-full border border-brand-gold/30 hover:border-brand-gold text-[11px] transition text-gray-300">
+                    🇫🇷 Français
+                </button>
+                <button onclick="switchLanguage('en')" id="lang-en" class="lang-btn px-3 py-1 rounded-full border border-brand-gold/30 hover:border-brand-gold text-[11px] transition text-gray-300">
+                    🇬🇧 English
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="sticky top-0 z-50 backdrop-blur-xl bg-brand-darkBg/85 border-b border-brand-gold/15 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- BRAND LOGO -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="relative w-12 h-12 rounded-full p-[2px] gold-gradient-bg shadow-gold-glow flex items-center justify-center transition-transform group-hover:scale-105">
+                        <div class="w-full h-full bg-brand-darkBg rounded-full flex items-center justify-center relative overflow-hidden">
+                            <svg class="w-8 h-8" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M50 15 L18 82 L38 82 L50 56 L62 82 L82 82 Z" fill="url(#goldLogoGrad)"/>
+                                <path d="M22 68 L48 45 L58 54 L80 26" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M66 26 H82 V42" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                                <defs>
+                                    <linearGradient id="goldLogoGrad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#FFD700"/>
+                                        <stop offset="0.5" stop-color="#F3A812"/>
+                                        <stop offset="1" stop-color="#B8860B"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-2xl font-black tracking-wider font-tajawal gold-gradient-text leading-tight">ARBAH</span>
+                        <div class="flex items-center gap-1">
+                            <span class="h-[1px] w-2 bg-brand-goldMid"></span>
+                            <span class="text-[10px] font-bold tracking-widest text-gray-300 uppercase">GROUP</span>
+                            <span class="h-[1px] w-2 bg-brand-goldMid"></span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden lg:flex items-center gap-8 font-semibold text-sm">
+                    <a href="#home" data-key="nav_home" class="text-brand-gold font-bold transition">الرئيسية</a>
+                    <a href="#services" data-key="nav_services" class="text-gray-300 hover:text-brand-gold transition">خدماتنا</a>
+                    <a href="#programs" data-key="nav_programs" class="text-gray-300 hover:text-brand-gold transition">تطبيقاتنا</a>
+                    <a href="#why-us" data-key="nav_why" class="text-gray-300 hover:text-brand-gold transition">لماذا أرباح</a>
+                    <a href="#contact" data-key="nav_contact" class="text-gray-300 hover:text-brand-gold transition">اتصل بنا</a>
+                </nav>
+
+                <!-- Header CTA Action Buttons -->
+                <div class="flex items-center gap-3">
+
+                    <!-- زر تفاعلي يفتح شاشة منحتها تفاعلاً -->
+                    <button onclick="openModal('requestModal')" class="hidden md:inline-flex items-center gap-2 px-4 py-2.5 rounded-full font-bold text-xs text-gray-200 bg-brand-purpleDeep border border-brand-gold/30 hover:border-brand-gold transition-all">
+                        <i class="fa-solid fa-rocket text-brand-gold text-sm"></i>
+                        <span data-key="btn_request_app">اطلب تطبيقك الآن</span>
+                    </button>
+
+                    <button id="mobileMenuBtn" type="button" aria-label="Menu" class="lg:hidden text-gray-300 hover:text-brand-gold p-2 text-xl focus:outline-none">
+                        <i class="fa-solid fa-bars" id="menuIcon"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-brand-cardBg/95 border-b border-brand-gold/20 backdrop-blur-2xl px-4 pt-3 pb-6 space-y-3 font-semibold">
+            <a href="#home" data-key="nav_home" class="block py-2 text-brand-gold font-bold">الرئيسية</a>
+            <a href="#services" data-key="nav_services" class="block py-2 text-gray-300 hover:text-brand-gold">خدماتنا</a>
+            <a href="#programs" data-key="nav_programs" class="block py-2 text-gray-300 hover:text-brand-gold">تطبيقاتنا</a>
+            <a href="#why-us" data-key="nav_why" class="block py-2 text-gray-300 hover:text-brand-gold">لماذا أرباح</a>
+            <a href="#contact" data-key="nav_contact" class="block py-2 text-gray-300 hover:text-brand-gold">اتصل بنا</a>
+            
+            <button onclick="openModal('requestModal')" class="w-full text-center py-3 rounded-xl font-bold text-sm text-white bg-emerald-600 hover:bg-emerald-700 flex items-center justify-center gap-2">
+                <i class="fa-solid fa-rocket"></i>
+                <span data-key="btn_request_app">اطلب تطبيقك الآن</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative pt-12 pb-24 lg:pt-20 lg:pb-32 overflow-hidden bg-grid-pattern bg-radial-purple">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                
+                <!-- Hero Left Content -->
+                <div class="lg:col-span-7 space-y-8 text-center lg:text-start">
+                    
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-purpleDeep/80 border border-brand-gold/30 text-brand-goldLight text-xs sm:text-sm font-semibold shadow-inner">
+                        <span class="flex h-2 w-2 rounded-full bg-brand-gold animate-ping"></span>
+                        <i class="fa-solid fa-crown text-brand-gold"></i>
+                        <span data-key="hero_badge">تطبيقات وحلول برمجية حسب الطلب باحترافية عالية</span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
+                        <span data-key="hero_title_1">هل تريد تصميم</span> <span class="gold-gradient-text" data-key="hero_title_2">تطبيق خاص بك</span> <span data-key="hero_title_3"> أو إنشاء موقع إلكتروني لنشاطك التجاري؟</span>
+                    </h1>
+
+                    <p data-key="hero_desc" class="text-gray-300 text-base sm:text-lg lg:text-xl font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        شركة أرباح (ARBAH GROUP) تقدم تطبيقات أنظمة المبيعات، تطبيقات الجوال والحاسوب، والمنصات السحابية المخصصة بدقة عالية لتسريع أداء أعمالك ومضاعفة أرباحك.
+                    </p>
+
+                    <!-- Hero CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <!-- زر يفتح نافذة تفاعلية مخصصة -->
+                        <button onclick="openModal('requestModal')" class="w-full sm:w-auto px-8 py-4 rounded-xl font-extrabold text-base text-black gold-gradient-bg gold-gradient-bg-hover shadow-gold-glow-lg transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-rocket text-xl"></i>
+                            <span data-key="btn_request_app">اطلب تطبيقك الآن</span>
+                        </button>
+
+                        <a href="https://zawali4gaming.github.io/arbah-web/" target="_blank" rel="noopener" class="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-base text-gray-200 bg-brand-purpleDeep/80 hover:bg-brand-purpleLight border border-brand-gold/30 hover:border-brand-gold transition-all flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-shop text-brand-gold text-lg"></i>
+                            <span data-key="btn_pos_hero">تطبيقات تسيير المحلات (POS)</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- HERO RIGHT: ANIMATED CARD -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        
+                        <div class="gold-border-rounded rounded-3xl p-6 bg-brand-cardBg/90 shadow-purple-glow backdrop-blur-xl relative z-10 animate-float">
+                            <div class="flex items-center justify-between border-b border-brand-gold/20 pb-4 mb-5">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+                                    <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+                                    <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+                                </div>
+                                <span class="text-xs text-brand-gold font-mono font-bold tracking-wider">ARBAH ERP SYSTEM v3.0</span>
+                            </div>
+
+                            <div class="space-y-4">
+                                <div class="bg-gradient-to-r from-brand-purpleDeep to-brand-darkBg p-4 rounded-2xl border border-brand-gold/40 flex items-center gap-3.5 shadow-lg relative overflow-hidden group">
+                                    <div class="w-12 h-12 rounded-xl bg-brand-gold/20 border border-brand-gold/50 flex items-center justify-center text-brand-gold text-xl shrink-0 shadow-gold-glow animate-pulse">
+                                        <i class="fa-solid fa-rocket"></i>
+                                    </div>
+                                    <div>
+                                        <h4 data-key="motive_title" class="text-xs font-bold text-brand-goldLight uppercase tracking-wider mb-0.5">شعار النجاح والتطوير</h4>
+                                        <p data-key="motive_desc" class="text-xs font-extrabold text-white leading-relaxed">
+                                            "نبتكر أفكارك، نصنع تطبيقك، ونقود مشروعك نحو النجاح والأرباح!"
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="bg-brand-darkBg/60 rounded-xl p-4 border border-brand-gold/10">
+                                    <div class="flex justify-between items-center text-xs text-gray-300 mb-3">
+                                        <span data-key="chart_label">مؤشر نمو الأداء والتزامن</span>
+                                        <span class="text-emerald-400 font-bold">+94.8%</span>
+                                    </div>
+                                    <div class="flex items-end gap-2 h-20 pt-2">
+                                        <div class="w-1/6 bg-brand-purpleLight rounded-t h-[45%]"></div>
+                                        <div class="w-1/6 bg-brand-purpleLight rounded-t h-[60%]"></div>
+                                        <div class="w-1/6 bg-brand-goldDark rounded-t h-[75%]"></div>
+                                        <div class="w-1/6 bg-brand-goldMid rounded-t h-[85%]"></div>
+                                        <div class="w-1/6 gold-gradient-bg rounded-t h-[95%] shadow-gold-glow"></div>
+                                        <div class="w-1/6 gold-gradient-bg rounded-t h-[100%] shadow-gold-glow"></div>
+                                    </div>
+                                </div>
+
+                                <div class="bg-brand-purpleDeep border border-brand-gold/40 rounded-xl p-3 flex items-center gap-3 shadow-lg">
+                                    <div class="w-9 h-9 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold shrink-0">
+                                        <i class="fa-solid fa-check"></i>
+                                    </div>
+                                    <div class="text-xs">
+                                        <p data-key="badge_status_1" class="font-bold text-white">تطبيق الموبايل متصل بالخادم</p>
+                                        <p data-key="badge_status_2" class="text-gray-400">تم التزامن الآني بنجاح بدون أخطاء</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- AVAILABLE PROGRAMS SECTION -->
+    <section id="programs" class="py-20 lg:py-28 relative bg-brand-cardBg/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <h2 data-key="programs_title" class="text-xs sm:text-sm font-bold tracking-widest text-brand-gold uppercase">برامجنا المتوفرة</h2>
+                <p data-key="programs_subtitle" class="text-3xl sm:text-4xl font-black text-white">تطبيقات جاهزة لعملك، تم تطويرها بعناية لدقة الأداء وسهولة الاستخدام</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <!-- Program 1: arbah pos pc -->
+                <div class="gold-border-rounded rounded-2xl p-6 bg-brand-cardBg/70 hover:bg-brand-cardBg transition-all duration-300 hover:-translate-y-2 group gold-border-glow text-center">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-purpleDeep border border-brand-gold/30 text-brand-gold flex items-center justify-center text-2xl mb-4 shadow-gold-glow mx-auto">
+                        <i class="fa-solid fa-desktop"></i>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-2">Arbah POS PC</h3>
+                    <p data-key="program_1_desc" class="text-xs text-gray-400 leading-relaxed mb-4">نظام نقاط البيع لأجهزة الكمبيوتر</p>
+                    <a href="https://github.com/zawali4gaming/arbah-web/releases/download/4.9.3/ARBAH-POS-V4.9.7-Setup.zip" class="w-full py-2 px-4 rounded-lg text-xs font-bold text-white bg-brand-purpleDeep hover:bg-brand-purpleLight border border-brand-gold/30 hover:border-brand-gold transition-all duration-300 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-download text-brand-gold"></i>
+                        <span data-key="program_download">تحميل</span>
+                    </a>
+                </div>
+
+                <!-- Program 2: arbah pos phone -->
+                <div class="gold-border-rounded rounded-2xl p-6 bg-brand-cardBg/70 hover:bg-brand-cardBg transition-all duration-300 hover:-translate-y-2 group gold-border-glow text-center">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-purpleDeep border border-brand-gold/30 text-brand-gold flex items-center justify-center text-2xl mb-4 shadow-gold-glow mx-auto">
+                        <i class="fa-solid fa-mobile-screen"></i>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-2">Arbah POS Phone</h3>
+                    <p data-key="program_2_desc" class="text-xs text-gray-400 leading-relaxed mb-4">نظام نقاط البيع للهواتف الذكية</p>
+                    <a href="https://github.com/zawali4gaming/arbah-ecran/releases/download/apk/ARBAH.POS.V1.4.apk" class="w-full py-2 px-4 rounded-lg text-xs font-bold text-white bg-brand-purpleDeep hover:bg-brand-purpleLight border border-brand-gold/30 hover:border-brand-gold transition-all duration-300 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-download text-brand-gold"></i>
+                        <span data-key="program_download">تحميل</span>
+                    </a>
+                </div>
+
+                <!-- Program 3: business report phone+pc -->
+                <div class="gold-border-rounded rounded-2xl p-6 bg-brand-cardBg/70 hover:bg-brand-cardBg transition-all duration-300 hover:-translate-y-2 group gold-border-glow text-center">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-purpleDeep border border-brand-gold/30 text-brand-gold flex items-center justify-center text-2xl mb-4 shadow-gold-glow mx-auto">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-2">Business Report Phone+PC</h3>
+                    <p data-key="program_3_desc" class="text-xs text-gray-400 leading-relaxed mb-4">تقارير الأعمال للهواتف والكمبيوتر</p>
+                    <a href="https://github.com/zawali4gaming/arbah-ads/releases/download/APK-BUSINESS/ARBAH.BUSINESS.V1.18.apk" class="w-full py-2 px-4 rounded-lg text-xs font-bold text-white bg-brand-purpleDeep hover:bg-brand-purpleLight border border-brand-gold/30 hover:border-brand-gold transition-all duration-300 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-download text-brand-gold"></i>
+                        <span data-key="program_download">تحميل</span>
+                    </a>
+                </div>
+
+                <!-- Program 4: masrof -->
+                <div class="gold-border-rounded rounded-2xl p-6 bg-brand-cardBg/70 hover:bg-brand-cardBg transition-all duration-300 hover:-translate-y-2 group gold-border-glow text-center">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-purpleDeep border border-brand-gold/30 text-brand-gold flex items-center justify-center text-2xl mb-4 shadow-gold-glow mx-auto">
+                        <i class="fa-solid fa-wallet"></i>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-2">Masrof</h3>
+                    <p data-key="program_4_desc" class="text-xs text-gray-400 leading-relaxed mb-4">تطبيق إدارة المصروفات والميزانية</p>
+                    <button type="button" onclick="sendWhatsAppRequest('Masrof')" class="w-full py-2 px-4 rounded-lg text-xs font-bold text-white bg-brand-purpleDeep hover:bg-brand-purpleLight border border-brand-gold/30 hover:border-brand-gold transition-all duration-300 flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+                        <span data-key="program_request">اطلبه عبر واتساب</span>
+                    </button>
+                </div>
+
+                <!-- Program 5: dawini -->
+                <div class="gold-border-rounded rounded-2xl p-6 bg-brand-cardBg/70 hover:bg-brand-cardBg transition-all duration-300 hover:-translate-y-2 group gold-border-glow text-center">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-purpleDeep border border-brand-gold/30 text-brand-gold flex items-center justify-center text-2xl mb-4 shadow-gold-glow mx-auto">
+                        <i class="fa-solid fa-pills"></i>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-2">Dawini</h3>
+                    <p data-key="program_5_desc" class="text-xs text-gray-400 leading-relaxed mb-4">تطبيق الرعاية الصحية والصيدليات</p>
+                    <button type="button" onclick="sendWhatsAppRequest('Dawini')" class="w-full py-2 px-4 rounded-lg text-xs font-bold text-white bg-brand-purpleDeep hover:bg-brand-purpleLight border border-brand-gold/30 hover:border-brand-gold transition-all duration-300 flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+                        <span data-key="program_request">اطلبه عبر واتساب</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALL TO ACTION / VALUE PROPOSITION SECTION -->
+    <section id="cta" class="py-20 lg:py-28 relative bg-brand-purpleDeep/40 border-t border-brand-gold/20 border-b border-brand-gold/20 overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center lg:text-start space-y-8 max-w-4xl mx-auto lg:mx-0">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-gold/10 border border-brand-gold/30 text-brand-gold text-xs sm:text-sm font-semibold shadow-inner">
+                    <span class="flex h-2 w-2 rounded-full bg-brand-gold animate-ping"></span>
+                    <i class="fa-solid fa-rocket text-brand-gold"></i>
+                    <span data-key="cta_badge">حلول برمجية احترافية لمشروعك</span>
+                </div>
+
+                <h2 data-key="cta_title" class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight text-white">
+                    هل تريد تصميم تطبيق خاص بك أو إنشاء موقع إلكتروني لنشاطك التجاري؟
+                </h2>
+
+                <p data-key="cta_desc_1" class="text-gray-300 text-base sm:text-lg lg:text-xl leading-relaxed font-normal">
+                    فريقنا التقني يرافقك من الفكرة إلى التنفيذ، ونطوّر لك حلولًا برمجية احترافية تشمل تطبيقات الهواتف، الحاسوب، المواقع الإلكترونية والمنصات السحابية، لتجعل مشروعك أكثر تطورًا وكفاءة.
+                </p>
+
+                <p data-key="cta_desc_2" class="text-gray-300 text-base sm:text-lg lg:text-xl leading-relaxed font-normal mt-4">
+                    شركة أرباح (ARBAH GROUP) تقدم تطبيقات أنظمة المبيعات، تطبيقات الجوال، والمنصات السحابية المخصصة بدقة عالية لتسريع أداء أعمالك ومضاعفة عائداتك.
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-6">
+                    <button onclick="openModal('requestModal')" class="w-full sm:w-auto px-8 py-4 rounded-xl font-extrabold text-base text-black gold-gradient-bg gold-gradient-bg-hover shadow-gold-glow-lg transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3">
+                        <i class="fa-solid fa-rocket text-xl"></i>
+                        <span data-key="cta_btn_request">اطلب تطبيقك الآن</span>
+                    </button>
+                    <a id="ctaWhatsapp" href="https://wa.me/213542054655" target="_blank" rel="noopener" class="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-base text-gray-200 bg-brand-purpleDeep/80 hover:bg-brand-purpleLight border border-brand-gold/30 hover:border-brand-gold transition-all flex items-center justify-center gap-3">
+                        <i class="fa-brands fa-whatsapp text-emerald-400 text-lg"></i>
+                        <span data-key="cta_btn_whatsapp">تواصل عبر واتساب</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION WITH INTERACTIVE SCREEN TRIGGERS -->
+    <section id="services" class="py-20 lg:py-28 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <h2 data-key="serv_subtitle" class="text-xs sm:text-sm font-bold tracking-widest text-brand-gold uppercase">خدماتنا المتميزة</h2>
+                <p data-key="serv_title" class="text-3xl sm:text-4xl font-black text-white">حلول برمجية شاملة مصممة خصيصاً لشركتك</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1: Opens Service Details Screen Modal -->
+                <div onclick="openServiceModal('mobile')" class="cursor-pointer gold-border-rounded rounded-2xl p-8 bg-brand-cardBg/70 hover:bg-brand-cardBg transition-all duration-300 hover:-translate-y-2 group gold-border-glow">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-purpleDeep border border-brand-gold/30 text-brand-gold flex items-center justify-center text-2xl mb-6 shadow-gold-glow">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                    </div>
+                    <h3 data-key="s1_title" class="text-xl font-bold text-white mb-3">تطوير تطبيقات الجوال</h3>
+                    <p data-key="s1_desc" class="text-gray-400 text-sm leading-relaxed mb-4">تصميم وتطوير تطبيقات أندرويد و iOS باستخدام أحدث التقنيات لضمان أداء سلس وواجهة عصرية.</p>
+                    <span class="text-xs font-bold text-brand-gold flex items-center gap-1"><span data-key="view_details">عرض التفاصيل والمميزات</span> <i class="fa-solid fa-arrow-left dir-arrow"></i></span>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="gold-border-rounded rounded-2xl p-8 bg-brand-cardBg/70 hover:bg-brand-cardBg transition-all duration-300 hover:-translate-y-2 group gold-border-glow border-2 border-brand-gold/40">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-purpleDeep border border-brand-gold/30 text-brand-gold flex items-center justify-center text-2xl mb-6 shadow-gold-glow">
+                        <i class="fa-solid fa-shop"></i>
+                    </div>
+                    <h3 data-key="s2_title" class="text-xl font-bold text-white mb-3">أنظمة إدارية للمبيعات وتسيير المحلات (POS)</h3>
+                    <p data-key="s2_desc" class="text-gray-400 text-sm leading-relaxed mb-4">برمجة وتوفير أنظمة مخصصة لإدارة المخازن، الفواتير، نقاط البيع POS، تسيير المحلات بمختلف أنواعها.</p>
+                    <a href="https://zawali4gaming.github.io/arbah-web/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold text-black gold-gradient-bg">
+                        <span data-key="btn_pos">تحميل تطبيقات التجارة (POS)</span>
+                        <i class="fa-solid fa-download"></i>
+                    </a>
+                </div>
+
+                <!-- Service 3: Opens Service Details Screen Modal -->
+                <div onclick="openServiceModal('ecommerce')" class="cursor-pointer gold-border-rounded rounded-2xl p-8 bg-brand-cardBg/70 hover:bg-brand-cardBg transition-all duration-300 hover:-translate-y-2 group gold-border-glow">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-purpleDeep border border-brand-gold/30 text-brand-gold flex items-center justify-center text-2xl mb-6 shadow-gold-glow">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </div>
+                    <h3 data-key="s3_title" class="text-xl font-bold text-white mb-3">المتاجر والمنصات الإلكترونية</h3>
+                    <p data-key="s3_desc" class="text-gray-400 text-sm leading-relaxed mb-4">إنشاء منصات تجارة إلكترونية متكاملة مع بوابات الدفع الإلكتروني، حساب التوصيل تلقائياً ورسائل التنبيهات.</p>
+                    <span class="text-xs font-bold text-brand-gold flex items-center gap-1"><span data-key="view_details">عرض التفاصيل والمميزات</span> <i class="fa-solid fa-arrow-left dir-arrow"></i></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY US SECTION - Linked to "لماذا أرباح" in top nav -->
+    <section id="why-us" class="py-20 lg:py-28 relative bg-brand-cardBg/30 border-y border-brand-gold/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-6 mb-16">
+                <h2 class="text-xs sm:text-sm font-bold tracking-widest text-brand-gold uppercase" data-key="why_us_title">لماذا تختار أرباح؟</h2>
+                <h3 class="text-3xl sm:text-4xl font-black text-white" data-key="why_us_subtitle">لأن نجاح مشروعك يبدأ باختيار الشريك التقني المناسب.</h3>
+                <p class="text-gray-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto" data-key="why_us_desc">
+                    في ARBAH GROUP لا نكتفي بتطوير البرامج، بل نقدم حلولًا رقمية مصممة وفق احتياجاتك، ونرافقك في تحويل أفكارك إلى مشاريع تقنية ناجحة.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Item 1 -->
+                <div class="bg-brand-darkBg/50 p-8 rounded-2xl border border-brand-gold/10 hover:border-brand-gold/30 transition-all duration-300 group">
+                    <div class="w-14 h-14 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6 shadow-gold-glow group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-magic"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3" data-key="why_us_item_1_title">حلول مصممة خصيصًا لك</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed" data-key="why_us_item_1_desc">
+                        نطور تطبيقات ومواقع وأنظمة برمجية تتناسب مع طبيعة نشاطك وأهدافك.
+                    </p>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="bg-brand-darkBg/50 p-8 rounded-2xl border border-brand-gold/10 hover:border-brand-gold/30 transition-all duration-300 group">
+                    <div class="w-14 h-14 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6 shadow-gold-glow group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3" data-key="why_us_item_2_title">خبرة في التطوير التقني</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed" data-key="why_us_item_2_desc">
+                        نعتمد على تقنيات حديثة لبناء حلول عملية ومرنة وقابلة للتوسع.
+                    </p>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="bg-brand-darkBg/50 p-8 rounded-2xl border border-brand-gold/10 hover:border-brand-gold/30 transition-all duration-300 group">
+                    <div class="w-14 h-14 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6 shadow-gold-glow group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-check-circle"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3" data-key="why_us_item_3_title">الجودة والاهتمام بالتفاصيل</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed" data-key="why_us_item_3_desc">
+                        نحرص على تقديم منتجات احترافية تجمع بين الأداء الجيد وسهولة الاستخدام.
+                    </p>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="bg-brand-darkBg/50 p-8 rounded-2xl border border-brand-gold/10 hover:border-brand-gold/30 transition-all duration-300 group">
+                    <div class="w-14 h-14 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6 shadow-gold-glow group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-handshake"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3" data-key="why_us_item_4_title">شراكة ومرافقة مستمرة</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed" data-key="why_us_item_4_desc">
+                        نرافقك من مرحلة الفكرة والتصميم إلى التطوير والإطلاق والدعم التقني.
+                    </p>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="bg-brand-darkBg/50 p-8 rounded-2xl border border-brand-gold/10 hover:border-brand-gold/30 transition-all duration-300 group">
+                    <div class="w-14 h-14 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6 shadow-gold-glow group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3" data-key="why_us_item_5_title">حلول موثوقة وآمنة</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed" data-key="why_us_item_5_desc">
+                        نهتم بحماية البيانات واستقرار الأنظمة وفق متطلبات كل مشروع.
+                    </p>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="bg-brand-darkBg/50 p-8 rounded-2xl border border-brand-gold/10 hover:border-brand-gold/30 transition-all duration-300 group">
+                    <div class="w-14 h-14 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6 shadow-gold-glow group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3" data-key="why_us_item_6_title">حلول تنمو مع أعمالك</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed" data-key="why_us_item_6_desc">
+                        نبني أنظمة قابلة للتطوير لمواكبة توسع مشروعك واحتياجاته المستقبلية.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact" class="bg-brand-darkBg border-t border-brand-gold/20 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-12 border-b border-brand-gold/15">
+                <div class="space-y-4">
+                    <span class="text-2xl font-black font-tajawal gold-gradient-text">ARBAH GROUP</span>
+                    <p data-key="footer_desc" class="text-xs text-gray-400 leading-relaxed">
+                        مجموعة أرباح للحلول البرمجية وتطبيقات حسب الطلب. نصمم ونطور أفكارك البرمجية بأحدث التقنيات وأعلى معايير الأمان والجودة.
+                    </p>
+                </div>
+                <div>
+                    <h4 data-key="footer_links" class="text-sm font-bold text-white mb-4">روابط سريعة</h4>
+                    <ul class="space-y-2 text-xs text-gray-400">
+                        <li><a href="https://zawali4gaming.github.io/arbah-web/" target="_blank" rel="noopener" class="text-brand-gold font-bold hover:underline" data-key="btn_pos">تحميل تطبيقات التجارة (POS)</a></li>
+                        <li><a href="#services" data-key="footer_services" class="hover:text-brand-gold transition">خدماتنا البرمجية</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 data-key="footer_contact" class="text-sm font-bold text-white mb-4">معلومات التواصل</h4>
+                    <p class="text-xs text-gray-300 font-mono mb-2"><i class="fa-brands fa-whatsapp text-emerald-400 me-2"></i> <span dir="ltr">+213 542 05 46 55</span></p>
+                    <p class="text-xs text-gray-300 font-mono"><i class="fa-solid fa-envelope text-brand-gold me-2"></i> <a href="mailto:ARBAHCOM.HERE@GMAIL.COM" class="hover:text-brand-gold">ARBAHCOM.HERE@GMAIL.COM</a></p>
+                    <p class="text-xs text-gray-300 font-mono mt-2"><a href="https://www.facebook.com/share/1ACaJdj7fi/" target="_blank" rel="noopener" class="text-brand-gold hover:underline"><i class="fa-brands fa-facebook-square text-brand-gold me-2"></i><span data-key="facebook_page">صفحة فيسبوك</span></a></p>
+                </div>
+            </div>
+
+            <div class="pt-8 text-center text-xs text-gray-400">
+                <p data-key="copyright">© 2026 مجموعة أرباح (ARBAH GROUP). جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ======================================================= -->
+    <!-- التبويبات والشاشات المنبثقة التفاعلية (MODALS & SCREENS) -->
+    <!-- ======================================================= -->
+
+    <!-- 1. شاشة "اطلب تطبيقك" التفاعلية المباشرة -->
+    <div id="requestModal" role="dialog" aria-modal="true" class="fixed inset-0 z-[60] hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-brand-cardBg border border-brand-gold/40 rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl">
+            <button type="button" aria-label="Close" onclick="closeModal('requestModal')" class="absolute top-4 left-4 text-gray-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center mx-auto mb-3 text-xl">
+                    <i class="fa-solid fa-rocket"></i>
+                </div>
+                <h3 data-key="req_title" class="text-xl font-bold text-white">إرسال طلب تطبيق مخصص</h3>
+                <p data-key="req_sub" class="text-xs text-gray-300 mt-1">املأ التفاصيل وسيتم تحويل طلبك فوراً إلى واتساب الشركة</p>
+            </div>
+
+            <form onsubmit="submitQuickRequest(event)" class="space-y-4 text-xs">
+                <div>
+                    <label data-key="req_name" class="block text-gray-300 font-semibold mb-1">الاسم الكامل *</label>
+                    <input type="text" id="modalName" required placeholder="أدخل اسمك" data-placeholder="req_name_ph" autocomplete="name" class="w-full bg-brand-darkBg border border-brand-gold/30 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-gold">
+                </div>
+                <div>
+                    <label data-key="req_phone" class="block text-gray-300 font-semibold mb-1">رقم الهاتف / الواتساب *</label>
+                    <input type="tel" id="modalPhone" required autocomplete="tel" placeholder="05XXXXXXXX" class="w-full bg-brand-darkBg border border-brand-gold/30 rounded-xl px-4 py-3 text-white font-mono focus:outline-none focus:border-brand-gold">
+                </div>
+                <div>
+                    <label data-key="req_type" class="block text-gray-300 font-semibold mb-1">نوع المشروع المطلوب *</label>
+                    <select id="modalService" class="w-full bg-brand-darkBg border border-brand-gold/30 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-gold">
+                        <option value="1" data-key="req_opt_1">تطبيق هاتف جوال (Android / iOS)</option>
+                        <option value="2" data-key="req_opt_2">برنامج تسيير محلات ومبيعات (POS/EXE)</option>
+                        <option value="3" data-key="req_opt_3">منصة متجر إلكتروني سحابي</option>
+                        <option value="4" data-key="req_opt_4">برمجية مخصصة بالكامل حسب الطلب</option>
+                    </select>
+                </div>
+                <div>
+                    <label data-key="req_details" class="block text-gray-300 font-semibold mb-1">تفاصيل الفكرة والشروط</label>
+                    <textarea id="modalDetails" rows="3" placeholder="اكتب نبذة عن مشروعك..." data-placeholder="req_details_ph" maxlength="1000" class="w-full bg-brand-darkBg border border-brand-gold/30 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-gold"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3.5 rounded-xl font-bold text-sm text-black gold-gradient-bg gold-gradient-bg-hover transition shadow-gold-glow flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span data-key="req_submit">إرسال الطلب عبر الواتساب الآن</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 2. شاشة عرض تفاصيل الخدمات التفاعلية -->
+    <div id="serviceModal" role="dialog" aria-modal="true" class="fixed inset-0 z-[60] hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-brand-cardBg border border-brand-gold/40 rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl">
+            <button type="button" aria-label="Close" onclick="closeModal('serviceModal')" class="absolute top-4 left-4 text-gray-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="serviceModalContent" class="space-y-4 text-xs">
+                <!-- يتم تعبئة المحتوى ديناميكياً عبر الجافاسكريبت -->
+            </div>
+            <div class="mt-6 pt-4 border-t border-brand-gold/20 flex gap-3">
+                <button onclick="closeModal('serviceModal'); openModal('requestModal');" data-key="service_request_btn" class="w-full py-3 rounded-xl font-bold text-xs text-black gold-gradient-bg">طلب هذه الخدمة الآن</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC & TRANSLATION ENGINE -->
+    <script>
+        let currentLang = 'ar';
+
+        const translations = {
+            ar: {
+                lang_select_title: "اختر اللغة / Language:",
+                nav_home: "الرئيسية",
+                nav_services: "خدماتنا",
+                nav_why: "لماذا أرباح",
+                nav_contact: "اتصل بنا",
+                btn_pos: "تحميل تطبيقات التجارة (POS)",
+                btn_request_app: "اطلب تطبيقك الآن",
+                hero_badge: "تطبيقات وحلول برمجية حسب الطلب باحترافية عالية",
+                hero_title_1: "هل تريد تصميم",
+                hero_title_2: "تطبيق خاص بك",
+                hero_title_3: "أو إنشاء موقع إلكتروني لنشاطك التجاري؟",
+                hero_desc: "شركة أرباح (ARBAH GROUP) تقدم تطبيقات أنظمة المبيعات، تطبيقات الجوال والحاسوب، والمنصات السحابية المخصصة بدقة عالية لتسريع أداء أعمالك ومضاعفة أرباحك.",
+                motive_title: "شعار النجاح والتطوير",
+                motive_desc: '"نبتكر أفكارك، نصنع تطبيقك، ونقود مشروعك نحو النجاح والأرباح!"',
+                chart_label: "مؤشر نمو الأداء والتزامن",
+                badge_status_1: "تطبيق الموبايل متصل بالخادم",
+                badge_status_2: "تم التزامن الآني بنجاح بدون أخطاء",
+                serv_subtitle: "خدماتنا المتميزة",
+                serv_title: "حلول برمجية شاملة مصممة خصيصاً لشركتك",
+                s1_title: "تطوير تطبيقات الجوال",
+                s1_desc: "تصميم وتطوير تطبيقات أندرويد و iOS باستخدام أحدث التقنيات لضمان أداء سلس وواجهة عصرية.",
+                s2_title: "أنظمة إدارية للمبيعات وتسيير المحلات (POS)",
+                s2_desc: "برمجة وتوفير أنظمة مخصصة لإدارة المخازن، الفواتير، نقاط البيع POS، تسيير المحلات بمختلف أنواعها.",
+                s3_title: "المتاجر والمنصات الإلكترونية",
+                s3_desc: "إنشاء منصات تجارة إلكترونية متكاملة مع بوابات الدفع الإلكتروني، حساب التوصيل تلقائياً ورسائل التنبيهات.",
+                footer_desc: "مجموعة أرباح للحلول البرمجية وتطبيقات حسب الطلب. نصمم ونطور أفكارك البرمجية بأحدث التقنيات وأعلى معايير الأمان والجودة.",
+                footer_links: "روابط سريعة",
+                footer_contact: "معلومات التواصل",
+                why_us_title: "لماذا تختار أرباح؟",
+                why_us_subtitle: "لأن نجاح مشروعك يبدأ باختيار الشريك التقني المناسب.",
+                why_us_desc: "في ARBAH GROUP لا نكتفي بتطوير البرامج، بل نقدم حلولًا رقمية مصممة وفق احتياجاتك، ونرافقك في تحويل أفكارك إلى مشاريع تقنية ناجحة.",
+                why_us_item_1_title: "حلول مصممة خصيصًا لك",
+                why_us_item_1_desc: "نطور تطبيقات ومواقع وأنظمة برمجية تتناسب مع طبيعة نشاطك وأهدافك.",
+                why_us_item_2_title: "خبرة في التطوير التقني",
+                why_us_item_2_desc: "نعتمد على تقنيات حديثة لبناء حلول عملية ومرنة وقابلة للتوسع.",
+                why_us_item_3_title: "الجودة والاهتمام بالتفاصيل",
+                why_us_item_3_desc: "نحرص على تقديم منتجات احترافية تجمع بين الأداء الجيد وسهولة الاستخدام.",
+                why_us_item_4_title: "شراكة ومرافقة مستمرة",
+                why_us_item_4_desc: "نرافقك من مرحلة الفكرة والتصميم إلى التطوير والإطلاق والدعم التقني.",
+                why_us_item_5_title: "حلول موثوقة وآمنة",
+                why_us_item_5_desc: "نهتم بحماية البيانات واستقرار الأنظمة وفق متطلبات كل مشروع.",
+                why_us_item_6_title: "حلول تنمو مع أعمالك",
+                why_us_item_6_desc: "نبني أنظمة قابلة للتطوير لمواكبة توسع مشروعك واحتياجاته المستقبلية.",
+                service_mobile_title: "تطوير تطبيقات الجوال (Android & iOS)",
+                service_mobile_desc: "نحن نصمم تطبيقات الهواتف الذكية بأعلى معايير الجودة والأداء السلس. تشمل خدماتنا:",
+                service_mobile_li_1: "برمجة متوافقة مع أنظمة أندرويد وآيفون.",
+                service_mobile_li_2: "واجهات مستخدم عصرية وسهلة الاستخدام (UI/UX).",
+                service_mobile_li_3: "إشعارات فورية وربط مباشر مع قواعد البيانات والسيرفرات السحابية.",
+                service_mobile_li_4: "دعم كامل للغة العربية والفرنسية والإنجليزية.",
+                service_ecommerce_title: "المتاجر والمنصات الإلكترونية المتكاملة",
+                service_ecommerce_desc: "نبني لك متجراً احترافياً يعرض منتجاتك ويدير مبيعاتك بكفاءة عالية:",
+                service_ecommerce_li_1: "لوحة تحكم كاملة لإدارة المنتجات، الطلبات، والزبائن.",
+                service_ecommerce_li_2: "ربط بوابات الدفع الإلكتروني وتأكيد الطلبات.",
+                service_ecommerce_li_3: "حساب تكاليف التوصيل والشحن تلقائياً.",
+                service_ecommerce_li_4: "حماية عالية ضد الاختراقات وتشفير تام للبيانات.",
+                whatsapp_greeting: "مرحباً ARBAH GROUP، أود تقديم طلب مشروع جديد:",
+                whatsapp_name: "- الاسم:",
+                whatsapp_phone: "- الهاتف:",
+                whatsapp_service: "- الخدمة:",
+                whatsapp_details: "- التفاصيل:",
+                whatsapp_no_details: "لا توجد تفاصيل إضافية",
+                whatsapp_app_request: "مرحباً ARBAH GROUP، أود طلب تطبيق:",
+                whatsapp_app_details: "أرجو تزويدي بالتفاصيل والسعر.",
+                program_1_title: "Arbah POS PC",
+                program_1_desc: "نظام نقاط البيع لأجهزة الكمبيوتر",
+                program_2_title: "Arbah POS Phone",
+                program_2_desc: "نظام نقاط البيع للهواتف الذكية",
+                program_3_title: "Business Report Phone+PC",
+                program_3_desc: "تقارير الأعمال للهواتف والكمبيوتر",
+                program_4_title: "Masrof",
+                program_4_desc: "تطبيق إدارة المصروفات والميزانية",
+                program_5_title: "Dawini",
+                program_5_desc: "تطبيق الرعاية الصحية والصيدليات",
+                program_download: "تحميل",
+                cta_badge: "حلول برمجية احترافية لمشروعك",
+                cta_title: "هل تريد تصميم تطبيق خاص بك أو إنشاء موقع إلكتروني لنشاطك التجاري؟",
+                cta_desc_1: "فريقنا التقني يرافقك من الفكرة إلى التنفيذ، ونطوّر لك حلولًا برمجية احترافية تشمل تطبيقات الهواتف، الحاسوب، المواقع الإلكترونية والمنصات السحابية، لتجعل مشروعك أكثر تطورًا وكفاءة.",
+                cta_desc_2: "شركة أرباح (ARBAH GROUP) تقدم تطبيقات أنظمة المبيعات، تطبيقات الجوال، والمنصات السحابية المخصصة بدقة عالية لتسريع أداء أعمالك ومضاعفة عائداتك.",
+                cta_btn_request: "اطلب تطبيقك الآن",
+                cta_btn_whatsapp: "تواصل عبر واتساب",
+                nav_programs: "تطبيقاتنا",
+                btn_pos_hero: "تطبيقات تسيير المحلات (POS)",
+                programs_title: "برامجنا المتوفرة",
+                programs_subtitle: "تطبيقات جاهزة لعملك، تم تطويرها بعناية لدقة الأداء وسهولة الاستخدام",
+                program_request: "اطلبه عبر واتساب",
+                view_details: "عرض التفاصيل والمميزات",
+                footer_services: "خدماتنا البرمجية",
+                facebook_page: "صفحة فيسبوك",
+                copyright: "© 2026 مجموعة أرباح (ARBAH GROUP). جميع الحقوق محفوظة.",
+                req_title: "إرسال طلب تطبيق مخصص",
+                req_sub: "املأ التفاصيل وسيتم تحويل طلبك فوراً إلى واتساب الشركة",
+                req_name: "الاسم الكامل *",
+                req_name_ph: "أدخل اسمك",
+                req_phone: "رقم الهاتف / الواتساب *",
+                req_type: "نوع المشروع المطلوب *",
+                req_opt_1: "تطبيق هاتف جوال (Android / iOS)",
+                req_opt_2: "برنامج تسيير محلات ومبيعات (POS/EXE)",
+                req_opt_3: "منصة متجر إلكتروني سحابي",
+                req_opt_4: "برمجية مخصصة بالكامل حسب الطلب",
+                req_details: "تفاصيل الفكرة والشروط",
+                req_details_ph: "اكتب نبذة عن مشروعك...",
+                req_submit: "إرسال الطلب عبر الواتساب الآن",
+                service_request_btn: "طلب هذه الخدمة الآن",
+                whatsapp_cta_msg: "مرحباً ARBAH GROUP، أريد طلب تطبيق مشروع جديد لنشاطي التجاري.",
+                page_title: "مجموعة أرباح للحلول البرمجية | ARBAH GROUP - تطبيقات حسب الطلب",
+            },
+            fr: {
+                lang_select_title: "Langue / Language:",
+                nav_home: "Accueil",
+                nav_services: "Services",
+                nav_programs: "Applications",
+                nav_why: "Pourquoi ARBAH",
+                nav_contact: "Contactez-nous",
+                btn_pos: "Télécharger POS Commerce",
+                btn_request_app: "Demandez votre Application",
+                hero_badge: "Applications et Solutions Sur Mesure de Haute Qualité",
+                hero_title_1: "Transformez votre vision en",
+                hero_title_2: "Applications Logicielles",
+                hero_title_3: "qui boostent votre croissance",
+                hero_desc: "ARBAH GROUP développe des applications de vente, mobiles et plateformes cloud sur mesure pour optimiser vos performances.",
+                motive_title: "Motto du Succès",
+                motive_desc: '"Nous innovons vos idées, créons votre application et guidons votre projet vers le succès!"',
+                chart_label: "Indice de croissance & synchronisation",
+                badge_status_1: "Application Mobile Connectée",
+                badge_status_2: "Synchronisation réussie sans erreurs",
+                serv_subtitle: "Nos Services d'Excellence",
+                serv_title: "Solutions Logicielles Complètes sur Mesure",
+                s1_title: "Développement Mobile (Android & iOS)",
+                s1_desc: "Conception d'applications mobiles modernes assurant une fluidité et une interface élégante.",
+                s2_title: "Logiciels de Gestion & POS Commerce",
+                s2_desc: "Systèmes personnalisés pour la gestion de stock, facturation et caisse pour tous types de commerces.",
+                s3_title: "Plateformes E-Commerce",
+                s3_desc: "Création de boutiques en ligne intégrées avec paiement électronique et suivi automatisé.",
+                footer_desc: "ARBAH GROUP - Solutions logiciels et applications sur mesure avec les meilleures technologies.",
+                footer_links: "Liens Rapides",
+                footer_contact: "Contactez-nous",
+                why_us_title: "Pourquoi choisir ARBAH ?",
+                why_us_subtitle: "Parce que le succès de votre projet commence par le choix du bon partenaire technique.",
+                why_us_desc: "Chez ARBAH GROUP, nous ne nous contentons pas de développer des programmes, nous proposons des solutions numériques conçues selon vos besoins, et nous vous accompagnons pour transformer vos idées en projets techniques réussis.",
+                why_us_item_1_title: "Solutions conçues spécialement pour vous",
+                why_us_item_1_desc: "Nous développons des applications, sites web et systèmes logiciels adaptés à la nature de votre activité et à vos objectifs.",
+                why_us_item_2_title: "Expertise en développement technique",
+                why_us_item_2_desc: "Nous utilisons des technologies modernes pour créer des solutions pratiques, flexibles et évolutives.",
+                why_us_item_3_title: "Qualité et souci du détail",
+                why_us_item_3_desc: "Nous veillons à fournir des produits professionnels alliant bonne performance et facilité d'utilisation.",
+                why_us_item_4_title: "Partenariat et accompagnement continus",
+                why_us_item_4_desc: "Nous vous accompagnons de l'idée et la conception jusqu'au développement, au lancement et au support technique.",
+                why_us_item_5_title: "Solutions fiables et sécurisées",
+                why_us_item_5_desc: "Nous accordons de l'importance à la protection des données et à la stabilité des systèmes selon les exigences de chaque projet.",
+                why_us_item_6_title: "Des solutions qui grandissent avec votre activité",
+                why_us_item_6_desc: "Nous construisons des systèmes évolutifs pour suivre l'expansion de votre projet et ses besoins futurs.",
+                service_mobile_title: "Développement d'applications mobiles (Android & iOS)",
+                service_mobile_desc: "Nous concevons des applications mobiles avec les plus hauts standards de qualité et de performance fluide. Nos services incluent :",
+                service_mobile_li_1: "Programmation compatible avec Android et iPhone.",
+                service_mobile_li_2: "Interfaces utilisateur modernes et faciles à utiliser (UI/UX).",
+                service_mobile_li_3: "Notifications instantanées et connexion directe aux bases de données et serveurs cloud.",
+                service_mobile_li_4: "Prise en charge complète des langues arabe, française et anglaise.",
+                service_ecommerce_title: "Boutiques et plateformes électroniques intégrées",
+                service_ecommerce_desc: "Nous construisons pour vous une boutique professionnelle qui présente vos produits et gère vos ventes avec une grande efficacité :",
+                service_ecommerce_li_1: "Tableau de bord complet pour gérer les produits, commandes et clients.",
+                service_ecommerce_li_2: "Intégration des passerelles de paiement électronique et confirmation des commandes.",
+                service_ecommerce_li_3: "Calcul automatique des frais de livraison et d'expédition.",
+                service_ecommerce_li_4: "Protection élevée contre les piratages et chiffrement complet des données.",
+                whatsapp_greeting: "Bonjour ARBAH GROUP, je souhaite soumettre une nouvelle demande de projet :",
+                whatsapp_name: "- Nom :",
+                whatsapp_phone: "- Téléphone :",
+                whatsapp_service: "- Service :",
+                whatsapp_details: "- Détails :",
+                whatsapp_no_details: "Aucun détail supplémentaire",
+                whatsapp_app_request: "Bonjour ARBAH GROUP, je souhaite demander l'application :",
+                whatsapp_app_details: "Veuillez me fournir les détails et le prix.",
+                program_1_title: "Arbah POS PC",
+                program_1_desc: "Système de point de vente pour ordinateurs",
+                program_2_title: "Arbah POS Phone",
+                program_2_desc: "Système de point de vente pour smartphones",
+                program_3_title: "Business Report Phone+PC",
+                program_3_desc: "Rapports commerciaux pour téléphones et ordinateurs",
+                program_4_title: "Masrof",
+                program_4_desc: "Application de gestion des dépenses personnelles",
+                program_5_title: "Dawini",
+                program_5_desc: "Application de soins de santé et de pharmacies",
+                program_download: "Télécharger",
+                cta_badge: "Solutions logicielles professionnelles pour votre projet",
+                cta_title: "Voulez-vous concevoir une application personnalisée ou créer un site Web pour votre activité commerciale ?",
+                cta_desc_1: "Notre équipe technique vous accompagne de l'idée à l'exécution. Nous développons des solutions logicielles professionnelles incluant applications mobiles, ordinateurs, sites web et plateformes cloud pour rendre votre entreprise plus évolutive et efficace.",
+                cta_desc_2: "ARBAH GROUP propose des systèmes de vente, applications mobiles et plateformes cloud sur mesure avec une grande précision pour accélérer la performance de votre entreprise et doubler vos revenus.",
+                cta_btn_request: "Demandez votre application maintenant",
+                cta_btn_whatsapp: "Communiquer via WhatsApp",
+                btn_pos_hero: "Applications de gestion de commerce (POS)",
+                programs_title: "Nos applications disponibles",
+                programs_subtitle: "Des applications prêtes à l'emploi, développées avec soin pour la précision et la simplicité d'utilisation",
+                program_request: "Demander via WhatsApp",
+                view_details: "Voir les détails et avantages",
+                footer_services: "Nos services logiciels",
+                facebook_page: "Page Facebook",
+                copyright: "© 2026 ARBAH GROUP. Tous droits réservés.",
+                req_title: "Envoyer une demande d'application sur mesure",
+                req_sub: "Remplissez les détails et votre demande sera envoyée directement sur WhatsApp",
+                req_name: "Nom complet *",
+                req_name_ph: "Entrez votre nom",
+                req_phone: "Téléphone / WhatsApp *",
+                req_type: "Type de projet souhaité *",
+                req_opt_1: "Application mobile (Android / iOS)",
+                req_opt_2: "Logiciel de gestion de commerce et ventes (POS/EXE)",
+                req_opt_3: "Plateforme de boutique en ligne (cloud)",
+                req_opt_4: "Logiciel entièrement sur mesure",
+                req_details: "Détails de l'idée et conditions",
+                req_details_ph: "Décrivez brièvement votre projet...",
+                req_submit: "Envoyer la demande via WhatsApp maintenant",
+                service_request_btn: "Demander ce service maintenant",
+                whatsapp_cta_msg: "Bonjour ARBAH GROUP, je souhaite commander une application pour mon activité commerciale.",
+                page_title: "ARBAH GROUP | Solutions logicielles et applications sur mesure",
+            },
+            en: {
+                lang_select_title: "Language:",
+                nav_home: "Home",
+                nav_services: "Services",
+                nav_programs: "Applications",
+                nav_why: "Why Us",
+                nav_contact: "Contact Us",
+                btn_pos: "Download Commerce POS",
+                btn_request_app: "Request Your App Now",
+                hero_badge: "High-End Custom Software & App Solutions",
+                hero_title_1: "Turn your vision into",
+                hero_title_2: "Software Applications",
+                hero_title_3: "that drive growth & profits",
+                hero_desc: "ARBAH GROUP delivers custom sales systems, mobile apps, and cloud platforms tailored to accelerate your business.",
+                motive_title: "Motto of Success",
+                motive_desc: '"We innovate your ideas, build your application, and lead your project to success!"',
+                chart_label: "Performance & Sync Growth Index",
+                badge_status_1: "Mobile App Connected to Server",
+                badge_status_2: "Real-time sync successful with zero errors",
+                serv_subtitle: "Our Services",
+                serv_title: "Comprehensive Custom Software Solutions",
+                s1_title: "Mobile App Development",
+                s1_desc: "Building high-performance Android & iOS mobile applications with modern user interfaces.",
+                s2_title: "Retail & POS Management Systems",
+                s2_desc: "Custom inventory, invoicing, and Point of Sale (POS) software for all types of retail businesses.",
+                s3_title: "E-Commerce Platforms",
+                s3_desc: "Developing scalable online stores integrated with payment gateways and automated tracking.",
+                footer_desc: "ARBAH GROUP - Custom software solutions built with cutting-edge technology and high security.",
+                footer_links: "Quick Links",
+                footer_contact: "Contact Info",
+                why_us_title: "Why Choose ARBAH?",
+                why_us_subtitle: "Because your project's success starts with choosing the right technical partner.",
+                why_us_desc: "At ARBAH GROUP, we don't just develop software — we deliver digital solutions tailored to your needs, and we support you in turning your ideas into successful technical projects.",
+                why_us_item_1_title: "Custom Solutions Designed for You",
+                why_us_item_1_desc: "We develop apps, websites, and software systems tailored to your business activity and goals.",
+                why_us_item_2_title: "Technical Development Expertise",
+                why_us_item_2_desc: "We use modern technologies to build practical, flexible, and scalable solutions.",
+                why_us_item_3_title: "Quality and Attention to Detail",
+                why_us_item_3_desc: "We deliver professional products combining strong performance and ease of use.",
+                why_us_item_4_title: "Partnership and Ongoing Support",
+                why_us_item_4_desc: "We support you from concept and design through development, launch, and technical support.",
+                why_us_item_5_title: "Reliable and Secure Solutions",
+                why_us_item_5_desc: "We prioritize data protection and system stability according to each project's requirements.",
+                why_us_item_6_title: "Solutions That Grow with Your Business",
+                why_us_item_6_desc: "We build scalable systems to keep pace with your project's expansion and future needs.",
+                service_mobile_title: "Mobile App Development (Android & iOS)",
+                service_mobile_desc: "We design mobile applications to the highest quality and performance standards. Our services include:",
+                service_mobile_li_1: "Programming compatible with Android and iPhone.",
+                service_mobile_li_2: "Modern and easy-to-use user interfaces (UI/UX).",
+                service_mobile_li_3: "Instant notifications and direct connection to databases and cloud servers.",
+                service_mobile_li_4: "Full support for Arabic, French, and English languages.",
+                service_ecommerce_title: "Integrated Online Stores and E-Commerce Platforms",
+                service_ecommerce_desc: "We build you a professional store that showcases your products and manages your sales efficiently:",
+                service_ecommerce_li_1: "Full dashboard to manage products, orders, and customers.",
+                service_ecommerce_li_2: "Electronic payment gateway integration and order confirmation.",
+                service_ecommerce_li_3: "Automatic shipping and delivery cost calculation.",
+                service_ecommerce_li_4: "High protection against hacking and full data encryption.",
+                whatsapp_greeting: "Hello ARBAH GROUP, I would like to submit a new project request:",
+                whatsapp_name: "- Name:",
+                whatsapp_phone: "- Phone:",
+                whatsapp_service: "- Service:",
+                whatsapp_details: "- Details:",
+                whatsapp_no_details: "No additional details",
+                whatsapp_app_request: "Hello ARBAH GROUP, I would like to request the app:",
+                whatsapp_app_details: "Please provide details and price.",
+                program_2_title: "Arbah POS Phone",
+                program_3_title: "Business Report Phone+PC",
+                program_4_title: "Masrof",
+                program_5_title: "Dawini",
+                btn_pos_hero: "Retail Management Apps (POS)",
+                programs_title: "Our Available Apps",
+                programs_subtitle: "Ready-made apps for your business, carefully built for accurate performance and ease of use",
+                program_1_title: "Arbah POS PC",
+                program_1_desc: "Point-of-sale system for computers",
+                program_2_desc: "Point-of-sale system for smartphones",
+                program_3_desc: "Business reports for phones and computers",
+                program_4_desc: "Expense and budget management app",
+                program_5_desc: "Healthcare and pharmacy app",
+                program_download: "Download",
+                program_request: "Request via WhatsApp",
+                view_details: "View details & features",
+                footer_services: "Our Software Services",
+                facebook_page: "Facebook Page",
+                copyright: "© 2026 ARBAH GROUP. All rights reserved.",
+                req_title: "Send a Custom App Request",
+                req_sub: "Fill in the details and your request will be sent straight to the company's WhatsApp",
+                req_name: "Full Name *",
+                req_name_ph: "Enter your name",
+                req_phone: "Phone / WhatsApp *",
+                req_type: "Requested Project Type *",
+                req_opt_1: "Mobile app (Android / iOS)",
+                req_opt_2: "Retail & sales management software (POS/EXE)",
+                req_opt_3: "Cloud online store platform",
+                req_opt_4: "Fully custom software",
+                req_details: "Idea details & requirements",
+                req_details_ph: "Write a short summary of your project...",
+                req_submit: "Send request via WhatsApp now",
+                service_request_btn: "Request this service now",
+                whatsapp_cta_msg: "Hello ARBAH GROUP, I would like to order an app for my business.",
+                page_title: "ARBAH GROUP | Custom Software & Apps",
+                cta_badge: "Professional software solutions for your project",
+                cta_title: "Want a custom app or a website for your business?",
+                cta_desc_1: "Our technical team supports you from idea to delivery, building professional software including mobile apps, desktop apps, websites and cloud platforms to make your business more advanced and efficient.",
+                cta_desc_2: "ARBAH GROUP delivers custom sales systems, mobile apps and cloud platforms with high precision to speed up your business and multiply your revenue.",
+                cta_btn_request: "Request Your App Now",
+                cta_btn_whatsapp: "Contact via WhatsApp"
+            }
+        };
+
+        const SUPPORTED = ['ar', 'fr', 'en'];
+        let currentServiceType = null;
+
+        function waUrl(text) {
+            return 'https://wa.me/213542054655?text=' + encodeURIComponent(text);
+        }
+
+        function switchLanguage(lang) {
+            if (!SUPPORTED.includes(lang)) lang = 'ar';
+            currentLang = lang;
+            const t = translations[lang];
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = lang;
+
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active', 'text-gray-300'));
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if (btn.id !== 'lang-' + lang) btn.classList.add('text-gray-300');
+            });
+            document.getElementById('lang-' + lang).classList.add('active');
+
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const value = t[el.getAttribute('data-key')];
+                if (value !== undefined) el.textContent = value;
+            });
+            document.querySelectorAll('[data-placeholder]').forEach(el => {
+                const value = t[el.getAttribute('data-placeholder')];
+                if (value !== undefined) el.placeholder = value;
+            });
+            document.querySelectorAll('.dir-arrow').forEach(el => {
+                el.classList.toggle('fa-arrow-left', lang === 'ar');
+                el.classList.toggle('fa-arrow-right', lang !== 'ar');
+            });
+
+            const cta = document.getElementById('ctaWhatsapp');
+            if (cta) cta.href = waUrl(t.whatsapp_cta_msg);
+            if (currentServiceType) renderServiceModal(currentServiceType);
+
+            try { localStorage.setItem('arbah_lang', lang); } catch (e) {}
+        }
+
+        // Modal Controls
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+            if (modalId === 'serviceModal') currentServiceType = null;
+            if (document.querySelectorAll('#requestModal:not(.hidden), #serviceModal:not(.hidden)').length === 0) {
+                document.body.style.overflow = '';
+            }
+        }
+
+        ['requestModal', 'serviceModal'].forEach(id => {
+            document.getElementById(id).addEventListener('click', e => {
+                if (e.target.id === id) closeModal(id);
+            });
+        });
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') {
+                closeModal('requestModal');
+                closeModal('serviceModal');
+            }
+        });
+
+        // Service Details Screen Content Generator
+        function renderServiceModal(type) {
+            const t = translations[currentLang];
+            const contentDiv = document.getElementById('serviceModalContent');
+            const cfg = {
+                mobile: { icon: 'fa-mobile-screen-button', p: 'service_mobile' },
+                ecommerce: { icon: 'fa-cart-shopping', p: 'service_ecommerce' }
+            }[type];
+            if (!cfg) return;
+            const items = [1, 2, 3, 4].map(n => `<li>${t[cfg.p + '_li_' + n]}</li>`).join('');
+            contentDiv.innerHTML = `
+                <div class="text-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center mx-auto mb-2 text-xl">
+                        <i class="fa-solid ${cfg.icon}"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white">${t[cfg.p + '_title']}</h3>
+                </div>
+                <p class="text-gray-300 leading-relaxed">${t[cfg.p + '_desc']}</p>
+                <ul class="list-disc list-inside space-y-1 text-gray-300 mt-2">${items}</ul>
+            `;
+        }
+
+        function openServiceModal(type) {
+            currentServiceType = type;
+            renderServiceModal(type);
+            openModal('serviceModal');
+        }
+
+        // Quick Request Form Submission via WhatsApp
+        function submitQuickRequest(e) {
+            e.preventDefault();
+            const name = document.getElementById('modalName').value.trim();
+            const phone = document.getElementById('modalPhone').value.trim();
+            const select = document.getElementById('modalService');
+            const service = select.options[select.selectedIndex].text;
+            const details = document.getElementById('modalDetails').value.trim();
+
+            const t = translations[currentLang];
+            const message = [
+                t.whatsapp_greeting,
+                `${t.whatsapp_name} ${name}`,
+                `${t.whatsapp_phone} ${phone}`,
+                `${t.whatsapp_service} ${service}`,
+                `${t.whatsapp_details} ${details || t.whatsapp_no_details}`
+            ].join('\n');
+
+            window.open(waUrl(message), '_blank', 'noopener');
+            e.target.reset();
+            closeModal('requestModal');
+        }
+
+        // Send WhatsApp Request for Available Programs
+        function sendWhatsAppRequest(appName) {
+            const t = translations[currentLang];
+            window.open(waUrl(`${t.whatsapp_app_request} ${appName}\n\n${t.whatsapp_app_details}`), '_blank', 'noopener');
+        }
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+
+        function setMenu(open) {
+            mobileMenu.classList.toggle('hidden', !open);
+            menuIcon.className = open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+        }
+        mobileMenuBtn.addEventListener('click', () => setMenu(mobileMenu.classList.contains('hidden')));
+        mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+
+        // Restore saved language
+        let savedLang = 'ar';
+        try { savedLang = localStorage.getItem('arbah_lang') || 'ar'; } catch (e) {}
+        switchLanguage(savedLang);
+    </script>
+</body>
+</html>
